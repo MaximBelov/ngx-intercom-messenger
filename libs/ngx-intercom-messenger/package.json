@@ -1,0 +1,21 @@
+{
+  "name": "ngx-intercom-messenger",
+  "version": "18.0.0-dev.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximBelov/ngx-intercom-messenger.git"
+  },
+  "keywords": [
+    "Intercom",
+    "Angular"
+  ],
+  "bugs": {
+    "url": "https://github.com/MaximBelov/ngx-intercom-messenger/issues"
+  },
+  "homepage": "https://github.com/MaximBelov/ngx-intercom-messenger#readme",
+  "peerDependencies": {
+    "@intercom/messenger-js-sdk": "^0.0.14",
+    "rxjs": "^7.5.2"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "name": "ngx-intercom-messenger-repo",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximBelov/ngx-intercom-messenger.git"
+  },
+  "keywords": [
+    "Intercom",
+    "Angular"
+  ],
+  "bugs": {
+    "url": "https://github.com/MaximBelov/ngx-intercom-messenger/issues"
+  },
+  "homepage": "https://github.com/MaximBelov/ngx-intercom-messenger#readme",
+  "scripts": {
+    "ng": "ng",
+    "lint:lib": "ng lint ngx-intercom-messenger",
+    "karma:lib": "ng run ngx-intercom-messenger:karma",
+    "build:lib": "ng build ngx-intercom-messenger -c production",
+    "cypress:lib:ct": "ng run ngx-intercom-messenger:ct",
+    "lint:demo": "ng lint demo",
+    "karma:demo": "ng run demo:karma",
+    "build:demo": "ng build demo",
+    "cypress:demo:ct": "ng run demo:ct",
+    "cypress:demo:e2e": "ng run demo:e2e",
+    "cypress:demo:open": "ng run demo:cypress-open",
+    "serve:demo": "ng serve demo"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^18.0.0",
+    "@angular-devkit/build-angular": "18.2.10",
+    "@angular/animations": "18.2.9",
+    "@angular/cdk": "18.2.10",
+    "@angular/cli": "18.2.10",
+    "@angular/common": "18.2.9",
+    "@angular/compiler": "18.2.9",
+    "@angular/compiler-cli": "18.2.9",
+    "@angular/core": "18.2.9",
+    "@angular/forms": "18.2.9",
+    "@angular/language-service": "18.2.9",
+    "@angular/material": "18.2.10",
+    "@angular/platform-browser": "18.2.9",
+    "@angular/platform-browser-dynamic": "18.2.9",
+    "@angular/platform-server": "18.2.9",
+    "@angular/router": "18.2.9",
+    "@angular/service-worker": "18.2.9",
+    "@cypress/schematic": "^2.5.2",
+    "@eslint/js": "^9.14.0",
+    "@intercom/messenger-js-sdk": "^0.0.14",
+    "@types/dotenv-webpack": "^7.0.8",
+    "@types/jasmine": "^5.1.4",
+    "@types/node": "^22.8.6",
+    "angular-eslint": "18.4.0",
+    "core-js": "3.38.1",
+    "cypress": "latest",
+    "dotenv-webpack": "^8.1.0",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^15.11.0",
+    "jasmine": "^5.4.0",
+    "karma": "6.4.4",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-cli": "2.0.0",
+    "karma-coverage-istanbul-reporter": "3.0.3",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.1.0",
+    "karma-spec-reporter": "^0.0.36",
+    "ng-packagr": "^18.2.1",
+    "prettier": "^3.3.3",
+    "rxjs": "7.8.1",
+    "ts-node": "10.9.2",
+    "tslib": "^2.3.0",
+    "typescript": "~5.5.2",
+    "typescript-eslint": "8.10.0"
+  },
+  "engines": {
+    "node": ">= 20.0.0",
+    "npm": ">= 8"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "libs",
+  "projects": {
+    "ngx-intercom-messenger": {
+      "root": "libs/ngx-intercom-messenger",
+      "sourceRoot": "libs/ngx-intercom-messenger/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "libs/ngx-intercom-messenger/ng-package.json",
+            "tsConfig": "libs/ngx-intercom-messenger/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ngx-intercom-messenger/tsconfig.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "libs/ngx-intercom-messenger/eslint.config.js",
+            "lintFilePatterns": [
+              "libs/ngx-intercom-messenger/**/*.ts"
+            ]
+          }
+        },
+        "karma": {
+          "builder": "@angular-builders/custom-webpack:karma",
+          "options": {
+            "watch": false,
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            },
+            "main": "karma.test.ts",
+            "tsConfig": "libs/ngx-intercom-messenger/tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js"
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "testingType": "component",
+            "watch": false,
+            "headless": true,
+            "browser": "chrome",
+            "spec": "libs/ngx-intercom-messenger/**/*.cy.ts",
+            "tsConfig": "libs/ngx-intercom-messenger/tsconfig.json",
+            "webpackConfig": "webpack.config.js"
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        }
+      }
+    },
+    "demo": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "outputPath": "dist/demo",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "polyfills": [
+              "zone.js"
+            ],
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "src/scss/default-theme.scss",
+              "src/scss/styles.scss"
+            ],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "800kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "eslintConfig": "./eslint.config.js",
+            "lintFilePatterns": [
+              "src/**/*[!spec].ts"
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "demo:build:production"
+            },
+            "development": {
+              "buildTarget": "demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "karma": {
+          "builder": "@angular-builders/custom-webpack:karma",
+          "options": {
+            "watch": false,
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            },
+            "main": "karma.test.ts",
+            "karmaConfig": "karma.conf.js",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "scripts": [],
+            "styles": [
+              "src/scss/default-theme.scss",
+              "src/scss/styles.scss"
+            ],
+            "assets": [
+              "src/assets",
+              "src/views"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "browser": "chrome",
+            "devServerTarget": "demo:serve"
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "headless": true,
+            "testingType": "component",
+            "browser": "chrome",
+            "spec": "src/app/**/*.cy.ts",
+            "tsConfig": "tsconfig.json",
+            "webpackConfig": "webpack.config.js"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "demo:serve:development"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "browser": "chrome",
+            "devServerTarget": "demo:serve",
+            "watch": true,
+            "headless": false
+          }
+        }
+      }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
+  }
+}
